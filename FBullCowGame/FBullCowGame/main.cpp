@@ -43,7 +43,8 @@ void PlayGame() {
 	BCGame.Reset();
 	int32 MaxTries = BCGame.getMaxTries();
 
-	for (int32 i = 0; i < MaxTries; i++) {
+	while (!BCGame.isGameWon() && BCGame.GetCurrentTry() != 8){
+		std::cout << MaxTries << std::endl;
 		FText Guess = getGuess();
 		BCGame.checkGuessValidity(Guess);
 		std::cout << "Your gues was: " << Guess << std::endl;

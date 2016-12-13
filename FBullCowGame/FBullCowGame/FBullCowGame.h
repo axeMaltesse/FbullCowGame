@@ -26,8 +26,8 @@ public:
 	bool isGameWon() const;
 
 	FBullCowGame();
-	void Reset(); //TODO something
-	EGuessStatus checkGuessValidity(FString); //RODO make a rich return value
+	void Reset();
+	EGuessStatus checkGuessValidity(FString);
 
 	BullCowCount SubmitGuess(FString);
 
@@ -35,4 +35,5 @@ private:
 	int32 MyCurrentTry;
 	int32 MyMaxTries;
 	FString myHiddenWord;
+	int32 numberOfBulls; //Player best guess.
 };
