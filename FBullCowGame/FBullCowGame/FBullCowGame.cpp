@@ -1,5 +1,7 @@
 #include "FBullCowGame.h"
 #include <iostream>
+#include <map>
+#define TMap std::map
 
 FBullCowGame::FBullCowGame() {
 	Reset();
@@ -36,9 +38,9 @@ void FBullCowGame::Reset(){
 
 EGuessStatus FBullCowGame::checkGuessValidity(FString Guess)
 {
-	if (false) {
+	if (!isIsogram(Guess)) {
 		return EGuessStatus::Not_isogram;
-	}if (false) {
+	}if (!isLowercase(Guess)) {
 		return EGuessStatus::Not_lower_case;
 	}if (Guess.length() != GetHiddenWordLength()) {
 		return EGuessStatus::Wrong_length;
@@ -67,5 +69,38 @@ BullCowCount FBullCowGame::SubmitGuess(FString Guess)
 		}
 	}
 	return BullCowCount;
+}
+
+bool FBullCowGame::isIsogram(FString Guess) const
+{
+	TMap<char, bool>LetterSeen;
+	if (Guess.length() < 2) {
+		return true;
+	}
+	else if (Guess.length() >= 2) {
+		for each (auto i in Guess){
+			i = tolower(i);
+			if (LetterSeen[i]) {
+				return false;
+			}
+			else{
+				LetterSeen[i] = true;
+			}
+		}
+	}
+	return true;
+}
+
+bool FBullCowGame::isLowercase(FString Guess) const
+{
+	for each (auto letter in Guess){
+		if (islower(letter)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	return true;
 }
 

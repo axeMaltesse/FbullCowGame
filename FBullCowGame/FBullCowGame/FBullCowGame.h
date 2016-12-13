@@ -36,4 +36,7 @@ private:
 	int32 MyMaxTries;
 	FString myHiddenWord;
 	int32 numberOfBulls; //Player best guess.
+
+	bool isIsogram(FString) const;
+	bool isLowercase(FString) const;
 };

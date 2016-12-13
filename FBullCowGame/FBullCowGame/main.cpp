@@ -7,15 +7,15 @@ using FText = std::string;
 using int32 = int;
 
 void PrintIntro() {
-	std::cout << BCGame.GetHiddenWordLength() << std::endl;
 	std::cout << "Welcome to my game!\n";
 	std::cout << "it is my revision of cpp\n";
+	std::cout << "The hidden word length is: " << BCGame.GetHiddenWordLength() << std::endl;
 	return;
 }
 
 FText getGuess() {
 	int32 MyCurrentTry = BCGame.GetCurrentTry();
-	std::cout << MyCurrentTry << std::endl;
+	std::cout << "Your try is: " << MyCurrentTry << std::endl;
 	std::cout << "Your Guess: \n";
 	FText Guess;
 	std::getline(std::cin, Guess);
@@ -44,17 +44,16 @@ void PlayGame() {
 	int32 MaxTries = BCGame.getMaxTries();
 
 	while (!BCGame.isGameWon() && BCGame.GetCurrentTry() != 8){
-		std::cout << MaxTries << std::endl;
 		FText Guess = getGuess();
 		BCGame.checkGuessValidity(Guess);
-		std::cout << "Your gues was: " << Guess << std::endl;
+		std::cout << "Your guess was: " << Guess << std::endl;
 		BullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
 		std::cout << "Bulls: " << BullCowCount.Bulls << ". Cows: " << BullCowCount.Cows << std::endl;
 	}
 }
 
 bool AskToPlayAgain() {
-	std::cout << "Do you want to play again?";
+	std::cout << "Do you want to play again? ";
 	FText Response = "";
 	std::getline(std::cin, Response);
 	return (Response[0] == 'y' || Response[0] == 'Y');
