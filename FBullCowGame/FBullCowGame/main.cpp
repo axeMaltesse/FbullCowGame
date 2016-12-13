@@ -7,15 +7,24 @@ using FText = std::string;
 using int32 = int;
 
 void PrintIntro() {
-	std::cout << "Welcome to my game!\n";
+	std::cout << "Welcome to Bull and Cows game!\n";
 	std::cout << "it is my revision of cpp\n";
 	std::cout << "The hidden word length is: " << BCGame.GetHiddenWordLength() << std::endl;
+	std::cout << "         {_____}         _____ " << std::endl;
+	std::cout << "         |*   *|        |^   ^|" << std::endl;
+	std::cout << "         \\_____/        \\ +++ /" << std::endl;
+	std::cout << "   /------++++\\          /----------+" << std::endl;
+	std::cout << "  /|   BULLS   |        |  COWS     |\\" << std::endl;
+	std::cout << " / |__,________|        |___________| \\" << std::endl;
+	std::cout << " *   ||       ||          ||      ||    *" << std::endl;
+	
+	
 	return;
 }
 
 FText getGuess() {
 	int32 MyCurrentTry = BCGame.GetCurrentTry();
-	std::cout << "Your try is: " << MyCurrentTry << std::endl;
+	std::cout << "Your try is: " << MyCurrentTry <<" of "<< BCGame.getMaxTries() <<std::endl;
 	std::cout << "Your Guess: \n";
 	FText Guess;
 	std::getline(std::cin, Guess);
@@ -43,7 +52,7 @@ void PlayGame() {
 	BCGame.Reset();
 	int32 MaxTries = BCGame.getMaxTries();
 
-	while (!BCGame.isGameWon() && BCGame.GetCurrentTry() != 8){
+	while (!BCGame.isGameWon() && BCGame.GetCurrentTry() != BCGame.getMaxTries()){
 		FText Guess = getGuess();
 		BCGame.checkGuessValidity(Guess);
 		std::cout << "Your guess was: " << Guess << std::endl;
